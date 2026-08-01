@@ -1,5 +1,4 @@
 #include <dt-bindings/zmk/matrix_transform.h> 
-#include "bkd_xiao_ble.dtsi"
 
 / {
     kscan: kscan {
