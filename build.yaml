@@ -19,5 +19,5 @@
 #
 ---
 include:
-  - board: xiao_ble//zmk
+  - board: xiao_ble
     shield: cart_macro
