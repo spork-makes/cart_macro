@@ -1,8 +1,9 @@
 #include <dt-bindings/zmk/matrix_transform.h> 
 
 / {
-    kscan: kscan {
+    default_kscan: kscan {
         compatible = "zmk,kscan-gpio-matrix";
+        label = "default_kscan";
         diode-direction = "col2row";
         
         row-gpios
@@ -32,11 +33,17 @@
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
         transform = <&default_transform>; 
+        keys  //                     w   h     x    y     rot    rx    ry
+            = <&key_physical_attrs 100 100     0   0       0     0     0> // Row 1
+            , <&key_physical_attrs 100 100   100   0       0     0     0>
+            , <&key_physical_attrs 100 100     0   100     0     0     0> // Row 2
+            , <&key_physical_attrs 100 100   100   100     0     0     0>
+            ;
     };
     
     
     chosen {
-        zmk,kscan = &kscan;
+        zmk,kscan = &default_kscan;
         zmk,physical-layout = &physical_layout;
     };
 };
