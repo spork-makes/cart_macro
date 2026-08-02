@@ -5,15 +5,17 @@
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "default_kscan";
-        diode-direction = "row2col";
+        diode-direction = "col2row";
         
         row-gpios
-            = <&xiao_d 1 GPIO_ACTIVE_HIGH>,
-              <&xiao_d 2 GPIO_ACTIVE_HIGH>;
-		col-gpios
-            = <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-              <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
-              <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        = <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+          <&xiao_d 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+
+    // Columns are the outputs: they must be set to ACTIVE_LOW to pull the row pins down
+        col-gpios
+            = <&xiao_d 3 GPIO_ACTIVE_LOW>,
+              <&xiao_d 4 GPIO_ACTIVE_LOW>,
+              <&xiao_d 5 GPIO_ACTIVE_LOW>;
 
 
     };
